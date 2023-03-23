@@ -30,12 +30,12 @@ struct CaloriesRowView: View {
                             .font(.subheadline)
                         Text("Fat: \(fat)")
                             .font(.subheadline)
+                        
                     }
+                    
                 }
-                .padding(.horizontal)
-                Image(systemName: "chevron.right")
+                
             }
-            .buttonStyle(.borderedProminent)
         }
         
         
