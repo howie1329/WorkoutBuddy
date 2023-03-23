@@ -15,6 +15,7 @@ struct MealFormView: View {
     @State var carbCount = 0
     @State var fatCount = 0
     @State var mealType = "Breakfast"
+    @Binding var viewState:Bool
     
     var foodType = ["Breakfast","Lunch","Dinner","Snacks"]
     var body: some View {
@@ -57,6 +58,8 @@ struct MealFormView: View {
                 
                 Button {
                     model.meals.append(Meal(id: UUID(), title: foodTitle, mealType: mealType, totalCalories: calories, protienCount: protienCount, carbCount: carbCount, fatCount: fatCount))
+                    viewState = false
+                    
                 } label: {
                     HStack{
                         Spacer()
@@ -67,11 +70,5 @@ struct MealFormView: View {
                 }
             }
         }
-    }
-}
-
-struct MealFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        MealFormView()
     }
 }

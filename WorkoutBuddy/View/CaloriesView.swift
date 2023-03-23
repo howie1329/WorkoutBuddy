@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CaloriesView: View {
     @EnvironmentObject var model:DataModel
+    @State var newMeal = false
     var body: some View {
         NavigationView{
             ScrollView{
@@ -26,19 +27,27 @@ struct CaloriesView: View {
                     VStack{
                         HStack{
                             Text("Calorie Intake: 1546")
+                                .font(.footnote)
                             Text("Protein: 89")
+                                .font(.footnote)
                             Text("Carbs: 102")
+                                .font(.footnote)
                             Text("Fats: 128")
-                            NavigationLink {
-                                MealFormView()
+                                .font(.footnote)
+                            Button {
+                                newMeal = true
                             } label: {
                                 Image(systemName: "plus.app")
                                     .imageScale(.large)
                                     .foregroundColor(.black)
                             }
+                            .sheet(isPresented: $newMeal) {
+                                MealFormView(viewState:$newMeal)
+                            }
                             
                         }
-                        .font(.footnote)
+                        
+                        
                         Divider()
                         Section{
                             ForEach(model.meals){item in
@@ -85,6 +94,7 @@ struct CaloriesView: View {
             }
             .padding()
         }
+        
     }
 }
 
