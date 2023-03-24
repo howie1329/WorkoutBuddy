@@ -57,7 +57,11 @@ struct MealFormView: View {
                 }
                 
                 Button {
-                    model.meals.append(Meal(id: UUID(), title: foodTitle, mealType: mealType, totalCalories: calories, protienCount: protienCount, carbCount: carbCount, fatCount: fatCount))
+                    model.dayMeal.food.append(Meal(id: UUID(), title: foodTitle, mealType: mealType, totalCalories: calories, protienCount: protienCount, carbCount: carbCount, fatCount: fatCount))
+                    model.dayMeal.totalCalories += calories
+                    model.dayMeal.protienCount += protienCount
+                    model.dayMeal.carbCount += carbCount
+                    model.dayMeal.fatCount += fatCount
                     viewState = false
                     
                 } label: {

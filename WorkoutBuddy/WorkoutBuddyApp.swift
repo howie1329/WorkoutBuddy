@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct WorkoutBuddyApp: App {
+    init(){
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -16,3 +21,5 @@ struct WorkoutBuddyApp: App {
         }
     }
 }
+
+

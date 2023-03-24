@@ -18,3 +18,15 @@ struct Meal: Hashable, Identifiable{
     var fatCount:Int
     
 }
+
+struct DayCal: Hashable, Identifiable{
+    
+    var id: UUID
+    var day:Date
+    var food:[Meal]
+    var totalCalories:Int
+    var protienCount:Int
+    var carbCount:Int
+    var fatCount:Int
+    
+}

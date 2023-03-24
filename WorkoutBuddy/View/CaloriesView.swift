@@ -17,6 +17,8 @@ struct CaloriesView: View {
                     VStack(alignment:.leading){
                         Text("User's Eating")
                             .font(.title.bold())
+                        Text("\(model.dayMeal.day.formatted(date:.complete, time:.omitted))")
+                            .font(.subheadline)
                     }
                     Spacer()
                     Circle()
@@ -25,13 +27,13 @@ struct CaloriesView: View {
                 }
                 VStack{
                     HStack{
-                        Text("Calorie Intake: 1546")
+                        Text("Calorie Intake: \(model.dayMeal.totalCalories)")
                             .font(.footnote)
-                        Text("Protein: 89")
+                        Text("Protein: \(model.dayMeal.protienCount)")
                             .font(.footnote)
-                        Text("Carbs: 102")
+                        Text("Carbs: \(model.dayMeal.carbCount)")
                             .font(.footnote)
-                        Text("Fats: 128")
+                        Text("Fats: \(model.dayMeal.fatCount)")
                             .font(.footnote)
                         Button {
                             newMeal = true
@@ -48,7 +50,7 @@ struct CaloriesView: View {
                     VStack{
                         List{
                             Section{
-                                ForEach(model.meals){item in
+                                ForEach(model.dayMeal.food){item in
                                     if item.mealType == "Breakfast"{
                                         CaloriesRowView(title: item.title, calories: item.totalCalories, protien: item.protienCount, carbs: item.carbCount, fat: item.fatCount)
                                     }
@@ -57,7 +59,7 @@ struct CaloriesView: View {
                                 Text("Breakfast")
                             }
                             Section{
-                                ForEach(model.meals){item in
+                                ForEach(model.dayMeal.food){item in
                                     if item.mealType == "Lunch"{
                                         CaloriesRowView(title: item.title, calories: item.totalCalories, protien: item.protienCount, carbs: item.carbCount, fat: item.fatCount)
                                     }
@@ -67,7 +69,7 @@ struct CaloriesView: View {
                                 Text("Lunch")
                             }
                             Section{
-                                ForEach(model.meals){item in
+                                ForEach(model.dayMeal.food){item in
                                     if item.mealType == "Dinner"{
                                         CaloriesRowView(title: item.title, calories: item.totalCalories, protien: item.protienCount, carbs: item.carbCount, fat: item.fatCount)
                                     }
@@ -76,7 +78,7 @@ struct CaloriesView: View {
                                 Text("Dinner")
                             }
                             Section{
-                                ForEach(model.meals){item in
+                                ForEach(model.dayMeal.food){item in
                                     if item.mealType == "Snacks"{
                                         CaloriesRowView(title: item.title, calories: item.totalCalories, protien: item.protienCount, carbs: item.carbCount, fat: item.fatCount)
                                     }
@@ -86,6 +88,7 @@ struct CaloriesView: View {
                             }
                             
                         }
+                        .listStyle(.inset)
                         
                         
                     }
