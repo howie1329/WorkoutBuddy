@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct CaloriesRowView: View {
+    @EnvironmentObject var model:DataModel
+    var item:Meal
     var title:String
+    var time:Date
     var calories:Int
     var protien:Int
     var carbs:Int
@@ -19,8 +22,12 @@ struct CaloriesRowView: View {
                 print(title)
             } label: {
                 VStack{
-                    Text(title)
-                        .font(.headline)
+                    HStack{
+                        Text(title)
+                            .font(.headline)
+                        Text("\(time.formatted(date: .omitted, time: .shortened))")
+                            .font(.subheadline)
+                    }
                     HStack{
                         Text("Cal: \(calories)")
                             .font(.subheadline)
@@ -35,6 +42,14 @@ struct CaloriesRowView: View {
                     
                 }
                 
+            }
+            .swipeActions {
+                Button(role:.destructive) {
+                    model.deleteCal(id: item.databaseID)
+                } label: {
+                    Image(systemName: "pencil")
+                }
+
             }
         }
         

@@ -10,6 +10,7 @@ import SwiftUI
 struct MealFormView: View {
     @EnvironmentObject var model:DataModel
     @State var foodTitle = ""
+    @State var time = Date.now
     @State var calories = 0
     @State var protienCount = 0
     @State var carbCount = 0
@@ -36,6 +37,9 @@ struct MealFormView: View {
                     Text("Meal Types")
                 }
                 Section{
+                    DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
+                }
+                Section{
                     TextField("calorieCount", value: $calories, format:.number)
                 } header: {
                     Text("Total Calories")
@@ -57,7 +61,7 @@ struct MealFormView: View {
                 }
                 
                 Button {
-                    model.dayMeal.food.append(Meal(id: UUID(), title: foodTitle, mealType: mealType, totalCalories: calories, protienCount: protienCount, carbCount: carbCount, fatCount: fatCount))
+                    model.dayMeal.food.append(Meal(id: UUID(), databaseID: "", title: foodTitle, mealType: mealType, totalCalories: calories, protienCount: protienCount, carbCount: carbCount, fatCount: fatCount, time: time))
                     model.dayMeal.totalCalories += calories
                     model.dayMeal.protienCount += protienCount
                     model.dayMeal.carbCount += carbCount

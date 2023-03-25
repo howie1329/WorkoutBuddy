@@ -10,12 +10,14 @@ import Foundation
 struct Meal: Hashable, Identifiable{
     
     var id: UUID
+    var databaseID:String
     var title:String
     var mealType:String
     var totalCalories:Int
     var protienCount:Int
     var carbCount:Int
     var fatCount:Int
+    var time:Date
     
 }
 

@@ -21,6 +21,7 @@
 		F37D942529CE5EE10055BCF4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F37D942429CE5EE10055BCF4 /* GoogleService-Info.plist */; };
 		F37D942829CE5F4E0055BCF4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F37D942729CE5F4E0055BCF4 /* FirebaseAuth */; };
 		F37D942A29CE5F4E0055BCF4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F37D942929CE5F4E0055BCF4 /* FirebaseFirestore */; };
+		F37D942C29CE94480055BCF4 /* CalorieHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37D942B29CE94480055BCF4 /* CalorieHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		F37D942029CC1A760055BCF4 /* CaloriesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesRowView.swift; sourceTree = "<group>"; };
 		F37D942229CC20120055BCF4 /* MealFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFormView.swift; sourceTree = "<group>"; };
 		F37D942429CE5EE10055BCF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F37D942B29CE94480055BCF4 /* CalorieHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				F37D941A29CC02E00055BCF4 /* CaloriesView.swift */,
 				F37D942029CC1A760055BCF4 /* CaloriesRowView.swift */,
 				F37D942229CC20120055BCF4 /* MealFormView.swift */,
+				F37D942B29CE94480055BCF4 /* CalorieHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				F37D942329CC20120055BCF4 /* MealFormView.swift in Sources */,
 				F37D941B29CC02E00055BCF4 /* CaloriesView.swift in Sources */,
 				F37D941529C6ECAC0055BCF4 /* HomeView.swift in Sources */,
+				F37D942C29CE94480055BCF4 /* CalorieHeaderView.swift in Sources */,
 				F37D940629C6EBF10055BCF4 /* ContentView.swift in Sources */,
 				F37D942129CC1A760055BCF4 /* CaloriesRowView.swift in Sources */,
 				F37D940429C6EBF10055BCF4 /* WorkoutBuddyApp.swift in Sources */,

@@ -10,9 +10,10 @@ import Firebase
 
 class DataModel: ObservableObject {
     
-    @Published var meals:[Meal] = [Meal(id: UUID(),title: "Chicken", mealType: "Breakfast", totalCalories: 892, protienCount: 73, carbCount: 100, fatCount: 73), Meal(id: UUID(),title: "Chicken", mealType: "Breakfast", totalCalories: 892, protienCount: 73, carbCount: 100, fatCount: 73)]
     
     @Published var dayMeal:DayCal = DayCal(id: UUID(), day: Date.now, food:[], totalCalories: 0,protienCount: 0,carbCount: 0,fatCount: 0)
+    
+    var currentDoc = ""
     
     init(){
         getData()
@@ -36,6 +37,8 @@ class DataModel: ObservableObject {
                     
                     let something = db.collection("Main").document(id).collection("Meals")
                     
+                    self.currentDoc = id
+                    
                     something.getDocuments { (snapshots, errors) in
                         if error == nil{
                             if let snapshots = snapshots {
@@ -54,7 +57,7 @@ class DataModel: ObservableObject {
                                     let protein = data["protein"] as? Int ?? 0
                                     let date = data["date"] as? Date ?? Date.now
                                     
-                                    todayMeals.append(Meal(id: UUID(), title: title, mealType: mealType, totalCalories: calories, protienCount: protein, carbCount: carbs, fatCount: fat))
+                                    todayMeals.append(Meal(id: UUID(), databaseID: id, title: title, mealType: mealType, totalCalories: calories, protienCount: protein, carbCount: carbs, fatCount: fat, time: date))
                                     
                                     print("It worked:\(id)")
                                     print(title)
@@ -74,6 +77,14 @@ class DataModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func deleteCal(id:String){
+        let db = Firestore.firestore()
+        let mainCollection = db.collection("Main").document(self.currentDoc).collection("Meals")
+        
+        mainCollection.document(id).delete()
+        
     }
     
     
