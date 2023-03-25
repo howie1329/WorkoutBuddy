@@ -13,6 +13,8 @@ class DataModel: ObservableObject {
     
     @Published var dayMeal:DayCal = DayCal(id: UUID(), day: Date.now, food:[], totalCalories: 0,protienCount: 0,carbCount: 0,fatCount: 0)
     
+    @Published var workoutPlans:[workoutPlan] = [workoutPlan(id: UUID(), title: "Plan1", plan: [workout(id: UUID(), title: "Curls", reps: 10, set: 3)])]
+    
     var currentDoc = ""
     
     init(){

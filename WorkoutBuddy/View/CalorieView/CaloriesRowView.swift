@@ -10,35 +10,30 @@ import SwiftUI
 struct CaloriesRowView: View {
     @EnvironmentObject var model:DataModel
     var item:Meal
-    var title:String
-    var time:Date
-    var calories:Int
-    var protien:Int
-    var carbs:Int
-    var fat:Int
     var body: some View {
         ZStack{
             Button {
-                print(title)
+                print(item.title)
             } label: {
                 VStack{
                     HStack{
-                        Text(title)
+                        Text(item.title)
                             .font(.headline)
-                        Text("\(time.formatted(date: .omitted, time: .shortened))")
+                        Text("\(item.time.formatted(date: .omitted, time: .shortened))")
                             .font(.subheadline)
                     }
                     HStack{
-                        Text("Cal: \(calories)")
-                            .font(.subheadline)
-                        Text("Protein: \(protien)")
-                            .font(.subheadline)
-                        Text("Carbs: \(carbs)")
-                            .font(.subheadline)
-                        Text("Fat: \(fat)")
-                            .font(.subheadline)
+                        Text("Cal: \(item.totalCalories)")
+                            .font(.headline)
+                        Text("Protein: \(item.protienCount)")
+                            .font(.headline)
+                        Text("Carbs: \(item.carbCount)")
+                            .font(.headline)
+                        Text("Fat: \(item.fatCount)")
+                            .font(.headline)
                         
                     }
+                    
                     
                 }
                 

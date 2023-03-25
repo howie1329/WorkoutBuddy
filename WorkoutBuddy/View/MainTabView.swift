@@ -11,9 +11,14 @@ struct MainTabView: View {
     @EnvironmentObject var model:DataModel
     var body: some View {
         TabView{
+            WorkoutView()
+                .tabItem {
+                    Image(systemName: "figure.gymnastics")
+                    Text("Workout")
+                }
             HomeView()
                 .tabItem {
-                    Image(systemName: "pencil")
+                    Image(systemName: "house")
                     Text("Home")
                 }
             CaloriesView()
