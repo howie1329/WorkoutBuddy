@@ -18,11 +18,11 @@ class DataModel: ObservableObject {
     var currentDoc = ""
     
     init(){
-        getData()
+        getMealData()
     }
     
     
-    func getData(){
+    func getMealData(){
         let db = Firestore.firestore()
         
         let collections = db.collection("Main")
@@ -53,7 +53,7 @@ class DataModel: ObservableObject {
                                     
                                     let title = data["title"] as? String ?? ""
                                     let mealType = data["mealType"] as? String ?? ""
-                                    let calories = data["Calories"] as? Int ?? 0
+                                    let calories = data["calories"] as? Int ?? 0
                                     let carbs = data["carbs"] as? Int ?? 0
                                     let fat = data["fat"] as? Int ?? 0
                                     let protein = data["protein"] as? Int ?? 0
@@ -88,6 +88,15 @@ class DataModel: ObservableObject {
         mainCollection.document(id).delete()
         
     }
+    
+    func addMealData(mealData:Meal){
+        let db = Firestore.firestore()
+        
+        let collection = db.collection("Main").document(currentDoc).collection("Meals")
+        collection.document().setData(["title":mealData.title,"mealType":mealData.mealType,"calories":mealData.totalCalories,"carbs":mealData.carbCount,"protein":mealData.protienCount,"fat":mealData.fatCount, "date":mealData.time])
+        
+    }
+                                    
     
     
 }
